@@ -212,7 +212,7 @@ class PCA(Base):
         """
         row_pc = self.row_principal_coordinates
         return pd.DataFrame(
-            data=([col.corr(pc) for _, pc in row_pc.iteritems()] for _, col in self.X.iteritems()),
+            data=([col.corr(pc) for _, pc in row_pc.items()] for _, col in self.X.items()),
             columns=row_pc.columns,
             index=self.X.columns
         )
@@ -231,9 +231,9 @@ class PCA(Base):
                 [
                     col.corr(pc) if col.dtype in ('int64', 'float64')
                                  else util.intraclass_correlation(col, pc)
-                    for _, pc in row_pc.iteritems()
+                    for _, pc in row_pc.items()
                 ]
-                for _, col in self.supplementary_columns.iteritems()
+                for _, col in self.supplementary_columns.items()
             ),
             columns=row_pc.columns,
             index=self.supplementary_columns.columns

@@ -84,7 +84,7 @@ class TestCA(unittest.TestCase):
         )
 
     def test_row_components_contributions_sum_equals_total_inertia(self):
-            for _, col_sum in self.ca.row_component_contributions.sum(axis='rows').iteritems():
+            for _, col_sum in self.ca.row_component_contributions.sum(axis='rows').items():
                 self.assertTrue(np.isclose(col_sum, 1))
 
     def test_row_cosine_similarities_shape_matches(self):
@@ -99,11 +99,11 @@ class TestCA(unittest.TestCase):
         self.assertEqual(self.ca.row_profiles.shape, (self.n, self.p))
 
     def test_row_profiles_sum(self):
-        for _, row_sum in self.ca.row_profiles.sum(axis='columns').iteritems():
+        for _, row_sum in self.ca.row_profiles.sum(axis='columns').items():
             self.assertTrue(np.isclose(row_sum, 1))
 
     def test_column_component_contributions(self):
-        for _, col_sum in self.ca.column_component_contributions.sum(axis='columns').iteritems():
+        for _, col_sum in self.ca.column_component_contributions.sum(axis='columns').items():
             self.assertTrue(np.isclose(col_sum, 1))
 
     def test_column_cosine_similarities_shape(self):
@@ -118,5 +118,5 @@ class TestCA(unittest.TestCase):
         self.assertEqual(self.ca.column_profiles.shape, (self.n, self.p))
 
     def test_column_profiles_sum(self):
-        for _, col_sum in self.ca.column_profiles.sum(axis='rows').iteritems():
+        for _, col_sum in self.ca.column_profiles.sum(axis='rows').items():
             self.assertTrue(np.isclose(col_sum, 1))

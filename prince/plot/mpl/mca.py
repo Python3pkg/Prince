@@ -51,7 +51,7 @@ class MplMCAPlotter(MplPlotter, MCAPlotter):
             labels = sorted(group_by.groups.keys())
             n_colors = len(labels)
             cmap = mpl_util.create_discrete_cmap(n_colors)
-            colors = cmap(range(n_colors))
+            colors = cmap(list(range(n_colors)))
             mpl_util.add_color_bar(ax, cmap, labels)
 
         if show_column_points:
